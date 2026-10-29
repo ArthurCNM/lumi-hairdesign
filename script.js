@@ -2,9 +2,9 @@
   "use strict";
 
   // ---------------------------------------------------------------------------
-  // Configurações do salão
+  // Configurações do salão (edite aqui)
   // ---------------------------------------------------------------------------
-  const WHATSAPP_NUMBER = "558197445717";
+  const WHATSAPP_NUMBER = "558198173239";
   const SALON_TIMEZONE = "America/Recife";
 
   // 0 = domingo ... 6 = sábado. Cada dia: [hora de abertura, hora de fechamento].
@@ -62,8 +62,8 @@
 
   function whatsappUrl(service) {
     const message = service
-      ? `Olá! Gostaria de agendar ${service.toLowerCase()}. Quais horários vocês têm disponíveis?`
-      : "Olá! Gostaria de agendar um horário. Quais horários vocês têm disponíveis?";
+      ? `Olá! Gostaria de agendar ${service.toLowerCase()} na Lumi Hairdesign. Quais horários vocês têm disponíveis?`
+      : "Olá! Gostaria de agendar um horário na Lumi Hairdesign.";
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
   }
 
@@ -197,7 +197,66 @@
     }
   }
 
+  // ---------------------------------------------------------------------------
+  // Revelação ao rolar. Cada grupo é [seletor, escalonar?]: com escalonamento,
+  // os itens do grupo entram um depois do outro. O hero fica de fora (usa só CSS).
+  // ---------------------------------------------------------------------------
+  const REVEAL_GROUPS = [
+    [".intro-inner > *", true],
+    [".section-heading > *", true],
+    [".service-card", true],
+    [".about-image", false],
+    [".about-copy > *", true],
+    [".quote-inner > *", true],
+    [".contact-map", false],
+    [".contact-card", true],
+    [".contact-social", false],
+  ];
+  const REVEAL_STEP = 0.09; // segundos entre um item e o próximo
+  const REVEAL_CLEANUP = 1400; // ms: depois disso o elemento volta ao CSS normal
+
+  function setupReveal() {
+    if (!("IntersectionObserver" in window)) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const targets = [];
+    REVEAL_GROUPS.forEach(([selector, stagger]) => {
+      document.querySelectorAll(selector).forEach((element, index) => {
+        element.setAttribute("data-reveal", "");
+        if (stagger) element.style.setProperty("--reveal-delay", `${index * REVEAL_STEP}s`);
+        targets.push(element);
+      });
+    });
+
+    function reveal(element) {
+      element.classList.add("is-visible");
+      // Terminada a animação, devolve o elemento ao CSS normal: assim o hover
+      // dos cards e outras transições não herdam o estado de revelação.
+      setTimeout(() => {
+        element.removeAttribute("data-reveal");
+        element.classList.remove("is-visible");
+        element.style.removeProperty("--reveal-delay");
+      }, REVEAL_CLEANUP);
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          // Quem já ficou para trás (página aberta no meio, por exemplo) aparece sem esperar.
+          if (!entry.isIntersecting && entry.boundingClientRect.top >= 0) return;
+          observer.unobserve(entry.target);
+          reveal(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -6% 0px" }
+    );
+
+    targets.forEach((element) => observer.observe(element));
+    document.documentElement.classList.add("reveal-ready");
+  }
+
   setupWhatsApp();
   setupOpenStatus();
   setupNavigation();
+  setupReveal();
 })();
