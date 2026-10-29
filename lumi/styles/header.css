@@ -1,0 +1,77 @@
+.site-header {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  right: 0;
+  left: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, .28);
+}
+
+.navigation,
+.brand,
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.navigation {
+  min-height: 84px;
+  justify-content: space-between;
+}
+
+.brand {
+  gap: 10px;
+}
+
+.header-logo {
+  display: block;
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+
+.brand-mark {
+  display: grid;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-family: var(--serif);
+  font-size: 19px;
+  font-style: italic;
+}
+
+.brand-name {
+  font-family: var(--serif);
+  font-size: 18px;
+  letter-spacing: -.5px;
+}
+
+.brand-name strong {
+  font-weight: 700;
+}
+
+.nav-links {
+  gap: 34px;
+  color: #57574f;
+  font-size: 12px;
+}
+
+.nav-links a,
+.text-link,
+.service-card a {
+  transition: color .2s ease;
+}
+
+.nav-links a:hover,
+.text-link:hover,
+.service-card a:hover {
+  color: var(--bege);
+}
+
+.button-small {
+  min-height: 40px;
+  padding: 0 17px;
+  font-size: 11px;
+}
