@@ -8,21 +8,33 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add("js");</script>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles/header.css">
+  <link rel="stylesheet" href="styles/hero.css">
+  <link rel="stylesheet" href="styles/sections.css">
+  <link rel="stylesheet" href="styles/footer.css">
+  <link rel="stylesheet" href="styles/responsive.css">
 </head>
 <body>
   <header class="site-header">
     <nav class="navigation container" aria-label="Navegação principal">
       <a class="brand" href="#inicio" aria-label="Lumi Hairdesign - início">
+        <!-- Para trocar o logo: altere o src/alt abaixo e, se preciso, --logo-size em styles/header.css -->
         <img class="header-logo" src="assets/logo.png" alt="Logotipo de Cibelly Santos Hair Stylist">
       </a>
-      <div class="nav-links">
+      <div class="nav-links" id="menu">
+        <a href="#inicio">Início</a>
         <a href="#servicos">Serviços</a>
         <a href="#sobre">O salão</a>
         <a href="#depoimentos">Depoimentos</a>
         <a href="#contato">Contato</a>
       </div>
       <a class="button button-small" href="#contato">Agendar horário <span aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" type="button" aria-controls="menu" aria-expanded="false" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+      </button>
     </nav>
   </header>
 
@@ -65,31 +77,39 @@
         <div class="service-grid">
           <article class="service-card">
             <span class="service-number">01</span>
-            <div class="service-icon" aria-hidden="true">✳</div>
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.1 8.1 20 20M8.1 15.9 20 4"/></svg>
+            </div>
             <h3>Corte &amp; styling</h3>
             <p>Um corte pensado para valorizar sua beleza e combinar com a sua rotina.</p>
-            <a href="#contato" aria-label="Agendar corte e styling">Agendar serviço <span aria-hidden="true">↗</span></a>
+            <a href="#contato" data-whatsapp="Corte &amp; styling" aria-label="Agendar corte e styling">Agendar serviço <span aria-hidden="true">↗</span></a>
           </article>
           <article class="service-card">
             <span class="service-number">02</span>
-            <div class="service-icon" aria-hidden="true">✧</div>
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="m11 3 1.9 5.6L18.5 10.5l-5.6 1.9L11 18l-1.9-5.6L3.5 10.5l5.6-1.9Z"/><path d="M19 16v5M16.5 18.5h5"/></svg>
+            </div>
             <h3>Cor &amp; iluminação</h3>
             <p>Coloração personalizada e técnicas de iluminação com resultado natural.</p>
-            <a href="#contato" aria-label="Agendar cor e iluminação">Agendar serviço <span aria-hidden="true">↗</span></a>
+            <a href="#contato" data-whatsapp="Cor &amp; iluminação" aria-label="Agendar cor e iluminação">Agendar serviço <span aria-hidden="true">↗</span></a>
           </article>
           <article class="service-card">
             <span class="service-number">03</span>
-            <div class="service-icon" aria-hidden="true">❋</div>
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3s6 6.4 6 11a6 6 0 0 1-12 0c0-4.6 6-11 6-11Z"/><path d="M9 14.5a3 3 0 0 0 3 3"/></svg>
+            </div>
             <h3>Tratamentos</h3>
             <p>Nutrição, hidratação e reconstrução para devolver vida aos seus fios.</p>
-            <a href="#contato" aria-label="Agendar tratamento capilar">Agendar serviço <span aria-hidden="true">↗</span></a>
+            <a href="#contato" data-whatsapp="Tratamentos" aria-label="Agendar tratamento capilar">Agendar serviço <span aria-hidden="true">↗</span></a>
           </article>
           <article class="service-card">
             <span class="service-number">04</span>
-            <div class="service-icon" aria-hidden="true">♡</div>
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="6" rx="1.5"/><path d="M6 10v8M10 10v8M14 10v8M18 10v8"/></svg>
+            </div>
             <h3>Escova &amp; finalização</h3>
             <p>O acabamento perfeito para uma ocasião especial ou para qualquer dia.</p>
-            <a href="#contato" aria-label="Agendar escova e finalização">Agendar serviço <span aria-hidden="true">↗</span></a>
+            <a href="#contato" data-whatsapp="Escova &amp; finalização" aria-label="Agendar escova e finalização">Agendar serviço <span aria-hidden="true">↗</span></a>
           </article>
         </div>
       </div>
@@ -145,7 +165,7 @@
             </span>
             <h2>WhatsApp</h2>
             <p>Fale com a gente e agende seu horário.</p>
-            <a href="https://wa.me/558197445717" target="_blank" rel="noopener noreferrer">Agendar pelo WhatsApp <span aria-hidden="true">↗</span></a>
+            <a href="https://wa.me/558197445717" data-whatsapp="" target="_blank" rel="noopener noreferrer">Agendar pelo WhatsApp <span aria-hidden="true">↗</span></a>
           </article>
           <article class="contact-card">
             <span class="contact-icon" aria-hidden="true">
@@ -153,6 +173,7 @@
             </span>
             <h2>Horário de Funcionamento</h2>
             <p>De terça a sábado<br>10h às 19h</p>
+            <p class="open-status" data-open-status hidden></p>
             <p>Atendemos também com hora marcada</p>
           </article>
         </div>
@@ -171,5 +192,11 @@
       <p>Desenvolvido por <a href="https://www.linkedin.com/in/arthur-ni%C3%B1o-09b689239/" target="_blank" rel="noopener noreferrer">Arthur Niño</a></p>
     </div>
   </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/558197445717" data-whatsapp="" target="_blank" rel="noopener noreferrer" aria-label="Agendar pelo WhatsApp" title="Agendar pelo WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20l1.2-4.7A8.5 8.5 0 1 1 20.5 11.5Z"/><path d="M9 8.5c.5 2.5 2 4 4.5 5l1-1 2 1c-.2 1.3-1 2-2.2 2-3.5-.3-7.5-4.3-7.8-7.8 0-1.2.7-2 2-2.2l1 2-1 1Z"/></svg>
+  </a>
+
+  <script src="script.js" defer></script>
 </body>
 </html>

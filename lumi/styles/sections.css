@@ -1,7 +1,7 @@
 .eyebrow {
   margin: 0 0 20px;
-  color: var(--bege);
-  font-size: 10px;
+  color: var(--bege-text);
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.8px;
   text-transform: uppercase;
@@ -35,11 +35,11 @@
 }
 
 .intro-inner > p:last-child {
-  max-width: 490px;
+  max-width: 520px;
   margin: 0 auto;
   color: var(--muted);
-  font-size: 13px;
-  line-height: 1.8;
+  font-size: 16px;
+  line-height: 1.75;
 }
 
 .services {
@@ -58,11 +58,11 @@
 }
 
 .section-heading > p {
-  max-width: 285px;
+  max-width: 310px;
   margin-bottom: 4px;
   color: var(--muted);
-  font-size: 12px;
-  line-height: 1.8;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 .service-grid {
@@ -74,7 +74,7 @@
 
 .service-card {
   position: relative;
-  min-height: 250px;
+  min-height: 290px;
   padding: 30px 24px 25px 0;
 }
 
@@ -87,35 +87,45 @@
   position: absolute;
   top: 30px;
   right: 22px;
-  color: #aaa79c;
-  font-size: 10px;
+  color: #8a887e;
+  font-size: 12px;
 }
 
 .service-icon {
-  margin-bottom: 27px;
+  margin-bottom: 24px;
   color: var(--bege);
-  font-size: 24px;
+}
+
+.service-icon svg {
+  display: block;
+  width: 30px;
+  height: 30px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5;
 }
 
 .service-card h3 {
   margin-bottom: 11px;
   font-family: var(--serif);
-  font-size: 19px;
+  font-size: 20px;
   font-weight: 600;
 }
 
 .service-card p {
-  min-height: 55px;
+  min-height: 5.1em;
   margin-bottom: 20px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.7;
 }
 
 .service-card a {
   display: inline-flex;
   gap: 9px;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 700;
 }
 
@@ -141,37 +151,25 @@
   object-position: center 42%;
 }
 
-.image-caption {
-  position: absolute;
-  right: -24px;
-  bottom: 25px;
-  padding: 14px 18px;
-  color: var(--ink);
-  background: var(--paper);
-  font-family: var(--serif);
-  font-size: 13px;
-  font-style: italic;
-}
-
 .about-copy {
-  max-width: 400px;
+  max-width: 420px;
 }
 
 .about-copy > p:not(.eyebrow) {
   margin-bottom: 26px;
   color: var(--muted);
-  font-size: 12px;
-  line-height: 1.9;
+  font-size: 15px;
+  line-height: 1.8;
 }
 
 .quote {
-  color: #f9f7f0;
+  color: var(--on-dark);
   background: var(--begedark);
   text-align: center;
 }
 
 .quote .eyebrow {
-  color: #d3d9cd;
+  color: var(--on-dark-muted);
 }
 
 .quote-inner {
@@ -181,7 +179,7 @@
 .quote-mark {
   display: block;
   height: 55px;
-  color: #bac4b2;
+  color: #d9b9a6;
   font-family: var(--serif);
   font-size: 78px;
   line-height: 1;
@@ -196,17 +194,18 @@
 
 .quote-author {
   margin-bottom: 16px;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 600;
 }
 
 .quote-author span {
-  color: #c1c6bb;
+  color: var(--on-dark-muted);
   font-weight: 400;
 }
 
 .quote-stars {
-  font-size: 11px;
+  color: #ecd3a0;
+  font-size: 13px;
 }
 
 .contact {
@@ -244,6 +243,12 @@
   background: #fff;
   box-shadow: 0 12px 35px rgba(41, 42, 36, .1);
   text-align: center;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.contact-card:hover {
+  box-shadow: 0 18px 42px rgba(41, 42, 36, .14);
+  transform: translateY(-3px);
 }
 
 .contact-icon {
@@ -253,7 +258,7 @@
   margin: 0 auto 20px;
   place-items: center;
   border-radius: 50%;
-  color: var(--bege);
+  color: var(--bege-text);
   background: #f0e5df;
 }
 
@@ -278,14 +283,14 @@
 .contact-card p {
   margin-bottom: 14px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.7;
 }
 
 .contact-card a,
 .contact-social a {
-  color: var(--bege);
-  font-size: 11px;
+  color: var(--bege-text);
+  font-size: 13px;
   font-weight: 700;
 }
 
@@ -294,9 +299,78 @@
   color: var(--begedark);
 }
 
+.contact-card .open-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.contact-card .open-status[hidden] {
+  display: none;
+}
+
+.open-status::before {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: #9b9a90;
+  content: "";
+}
+
+.open-status.is-open::before {
+  background: #3f8a58;
+  box-shadow: 0 0 0 4px rgba(63, 138, 88, .18);
+}
+
 .contact-social {
   margin: 22px 0 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
   text-align: center;
+}
+
+.whatsapp-float {
+  position: fixed;
+  z-index: 40;
+  right: 20px;
+  bottom: 20px;
+  display: grid;
+  width: 56px;
+  height: 56px;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--bege-text);
+  box-shadow: 0 10px 28px rgba(41, 42, 36, .25);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: opacity .3s ease, transform .3s ease, background .2s ease, visibility .3s;
+  visibility: hidden;
+}
+
+.whatsapp-float.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+  visibility: visible;
+}
+
+.whatsapp-float:hover {
+  background: var(--begedark);
+}
+
+.whatsapp-float svg {
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
 }
