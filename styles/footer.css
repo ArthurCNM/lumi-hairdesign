@@ -1,0 +1,35 @@
+.site-footer {
+  padding: 24px 0;
+  color: var(--on-dark-muted);
+  background: var(--begedark);
+}
+
+.site-footer a:focus-visible {
+  outline-color: #fff;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-inner .brand-mark {
+  width: 32px;
+  height: 32px;
+}
+
+.footer-inner .brand-name {
+  font-size: 15px;
+}
+
+.footer-inner > p {
+  margin: 0;
+  color: var(--on-dark-muted);
+  font-size: 12px;
+}
+
+.footer-inner > p a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
